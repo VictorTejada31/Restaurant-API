@@ -1,4 +1,5 @@
-﻿using Restaurant.Core.Domain.Entities;
+﻿using Restaurant.Core.Application.Interfaces.Repository;
+using Restaurant.Core.Domain.Entities;
 using Restaurant.Infrastructure.Persistence.Contexts;
 
 
