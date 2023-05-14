@@ -1286,10 +1286,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-<<<<<<< HEAD
-=======
           "AutoMapper": "12.0.1",
->>>>>>> feature/Identity_Layer
           "Restaurant.Core.Domain": "1.0.0"
         },
         "compile": {
@@ -3091,5 +3088,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché C:\\Users\\victo\\Desktop\\Restaurant API\\Restaurant\\Restaurant.Infrastructure.Identity\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
