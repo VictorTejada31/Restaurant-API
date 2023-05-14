@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "yisfYdGFYCLv3QXpPilKWBet0Zmr7YDrgqCJrF3Ureu5w7uZzVOxR6Y0CwZT/ajZeZ8YO2ngex8IQdfTmGzcgA==",
+=======
+  "dgSpecHash": "18BHEL1n8HdCvRPOy0T6Ck8y5B5ktvPJA8VXa+YfXglcGP0GO4u8tM8Jzoc3nfiS0n8YTvZxTM/oa8EaGiYSiA==",
+>>>>>>> feature/Identity_Layer
   "success": true,
   "projectFilePath": "C:\\Users\\victo\\Desktop\\Restaurant API\\Restaurant\\Restaurant.Infrastructure.Identity\\Restaurant.Infrastructure.Identity.csproj",
   "expectedPackageFiles": [

@@ -1286,6 +1286,10 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+<<<<<<< HEAD
+=======
+          "AutoMapper": "12.0.1",
+>>>>>>> feature/Identity_Layer
           "Restaurant.Core.Domain": "1.0.0"
         },
         "compile": {

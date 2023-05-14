@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "obM8YkPP6SlIPRPuCIm1HbfYoDUs6n+XlYqCqdUu6UXETe49zIIlh6WYnC/A+yyksBtopReOJzdnIPifWKBblQ==",
+  "dgSpecHash": "nnvOHT8advrizskYF/p3ALpA2xTt2ko2o3QVpRnsiRdlnoaxngdiHGkxkSfiuk/E0ZUisq3f3AgIIKKbfVc1bg==",
   "success": true,
   "projectFilePath": "C:\\Users\\victo\\Desktop\\Restaurant API\\Restaurant\\Restaurant.Core.Application\\Restaurant.Core.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\victo\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }
