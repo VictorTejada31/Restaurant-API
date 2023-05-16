@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "18BHEL1n8HdCvRPOy0T6Ck8y5B5ktvPJA8VXa+YfXglcGP0GO4u8tM8Jzoc3nfiS0n8YTvZxTM/oa8EaGiYSiA==",
+  "dgSpecHash": "Wd9KUAUK3KQbsMNTcfsnsrRnG9hxSpNvLNTVnpYvysIRUJdVc6wZvHGLB57WBLxqdbU3J89V69aZUMehHvlZQg==",
   "success": true,
   "projectFilePath": "C:\\Users\\victo\\Desktop\\Restaurant API\\Restaurant\\Restaurant.Infrastructure.Identity\\Restaurant.Infrastructure.Identity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\victo\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",
@@ -77,12 +79,5 @@
     "C:\\Users\\victo\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché C:\\Users\\victo\\Desktop\\Restaurant API\\Restaurant\\Restaurant.Infrastructure.Identity\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

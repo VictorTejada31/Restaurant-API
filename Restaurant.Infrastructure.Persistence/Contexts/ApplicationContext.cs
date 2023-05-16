@@ -10,7 +10,7 @@ namespace Restaurant.Infrastructure.Persistence.Contexts
         public DbSet<DishCategory> DishCategories { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<Table> Tables { get; set; }
+        public DbSet<Tables> Tables { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace Restaurant.Infrastructure.Persistence.Contexts
             modelBuilder.Entity<DishCategory>().ToTable("DishCategories");
             modelBuilder.Entity<Ingredient>().ToTable("Ingredients");
             modelBuilder.Entity<Order>().ToTable("Orders");
-            modelBuilder.Entity<Table>().ToTable("Tables");
+            modelBuilder.Entity<Tables>().ToTable("Tables");
 
 
             #endregion
@@ -31,7 +31,7 @@ namespace Restaurant.Infrastructure.Persistence.Contexts
             modelBuilder.Entity<DishCategory>().HasKey(d => d.Id);
             modelBuilder.Entity<Ingredient>().HasKey(i => i.Id);
             modelBuilder.Entity<Order>().HasKey(o => o.Id);
-            modelBuilder.Entity<Table>().HasKey(t => t.Id);
+            modelBuilder.Entity<Tables>().HasKey(t => t.Id);
 
 
             #endregion
@@ -44,7 +44,7 @@ namespace Restaurant.Infrastructure.Persistence.Contexts
                 .HasForeignKey(d => d.DishCategoryId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Table>()
+            modelBuilder.Entity<Tables>()
                 .HasMany<Order>(t => t.Orders)
                 .WithOne(o => o.Table)
                 .HasForeignKey(t => t.TableId)
@@ -106,14 +106,14 @@ namespace Restaurant.Infrastructure.Persistence.Contexts
 
             #region Table
 
-            modelBuilder.Entity<Table>().Property(t => t.State)
+            modelBuilder.Entity<Tables>().Property(t => t.State)
                 .HasMaxLength(30)
                 .IsRequired();
 
-            modelBuilder.Entity<Table>().Property(t => t.Capacity)
+            modelBuilder.Entity<Tables>().Property(t => t.Capacity)
                 .IsRequired();
 
-            modelBuilder.Entity<Table>().Property(o => o.Description)
+            modelBuilder.Entity<Tables>().Property(o => o.Description)
                 .HasMaxLength(250)
                 .IsRequired();
 

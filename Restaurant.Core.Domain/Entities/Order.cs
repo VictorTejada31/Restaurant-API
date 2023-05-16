@@ -11,6 +11,6 @@ namespace Restaurant.Core.Domain.Entities
         public string TableId { get; set; }
 
         //Navegation Property
-        public Table Table { get; set; }
+        public Tables Table { get; set; }
     }
 }

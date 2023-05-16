@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Restaurant", "Restaurant\WebApi.Restaurant.csproj", "{560D4DF9-BD44-48DD-A355-638DD9EB5209}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{0DB447D9-076F-4544-98DE-078C7E25D0BB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{29A54E12-B438-4C67-9EEC-3B14830F125C}"
@@ -21,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Core.Domain", "R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Infrastructure.Persistence", "Restaurant.Infrastructure.Persistence\Restaurant.Infrastructure.Persistence.csproj", "{E9D96A90-A3AA-4B98-A5FF-761DB3DCF859}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant.Infrastructure.Identity", "Restaurant.Infrastructure.Identity\Restaurant.Infrastructure.Identity.csproj", "{6091D74C-77EE-4686-BA05-2F6BA6A1F0DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Infrastructure.Identity", "Restaurant.Infrastructure.Identity\Restaurant.Infrastructure.Identity.csproj", "{6091D74C-77EE-4686-BA05-2F6BA6A1F0DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{560D4DF9-BD44-48DD-A355-638DD9EB5209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{560D4DF9-BD44-48DD-A355-638DD9EB5209}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{560D4DF9-BD44-48DD-A355-638DD9EB5209}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{560D4DF9-BD44-48DD-A355-638DD9EB5209}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D684D859-0101-45BE-B63B-D2E532DE3821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D684D859-0101-45BE-B63B-D2E532DE3821}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D684D859-0101-45BE-B63B-D2E532DE3821}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -54,7 +48,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{560D4DF9-BD44-48DD-A355-638DD9EB5209} = {14AA81C7-0450-46E6-90DC-74B136722731}
 		{29A54E12-B438-4C67-9EEC-3B14830F125C} = {0DB447D9-076F-4544-98DE-078C7E25D0BB}
 		{6BD18F43-82D5-40A0-B0BF-160B0B5B7CE4} = {0DB447D9-076F-4544-98DE-078C7E25D0BB}
 		{A6FD3E4B-BB3E-484B-9AEC-8A4537F067CB} = {0DB447D9-076F-4544-98DE-078C7E25D0BB}

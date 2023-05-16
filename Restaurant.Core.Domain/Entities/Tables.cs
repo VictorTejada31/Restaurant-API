@@ -3,7 +3,7 @@ using Restaurant.Core.Domain.Commons;
 
 namespace Restaurant.Core.Domain.Entities
 {
-    public class Table : BaseCommomProperties
+    public class Tables : BaseCommomProperties
     { 
         public int Capacity { get; set; }
         public string Description { get; set; }

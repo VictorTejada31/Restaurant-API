@@ -8,5 +8,6 @@ namespace Restaurant.Core.Application.Interfaces.Repository
         Task DeleteAsync(int id);
         Task<List<Entity>> GetAllAsync();
         Task<List<Entity>> GetAllWithIncludesAsync(List<string> properties);
+        Task<Entity> GetByIdAsync(int id);
     }
 }

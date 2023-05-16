@@ -46,5 +46,10 @@ namespace Restaurant.Infrastructure.Persistence.Repositories
 
             return await entities.ToListAsync();
         }
+
+        public async Task<Entity> GetByIdAsync(int id)
+        {
+            return await _context.Set<Entity>().FindAsync(id);
+        }
     }
 }

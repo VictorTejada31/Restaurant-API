@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "nnvOHT8advrizskYF/p3ALpA2xTt2ko2o3QVpRnsiRdlnoaxngdiHGkxkSfiuk/E0ZUisq3f3AgIIKKbfVc1bg==",
+  "dgSpecHash": "gQyeE8ZZIvfRdQsRruO7+YiFE+UOzXzHvXVLDeFwQ7vaaz8s+/av++nsmXY4BkPMeAao5p0YPpG4uamPxBlfTw==",
   "success": true,
   "projectFilePath": "C:\\Users\\victo\\Desktop\\Restaurant API\\Restaurant\\Restaurant.Core.Application\\Restaurant.Core.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\victo\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
-    "C:\\Users\\victo\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+    "C:\\Users\\victo\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }
