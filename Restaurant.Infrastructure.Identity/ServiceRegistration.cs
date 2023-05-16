@@ -36,13 +36,13 @@ namespace Restaurant.Infrastructure.Identity
                 .AddEntityFrameworkStores<IdentityContext>()
                 .AddDefaultTokenProviders();
                 
-
-            services.AddAuthentication();
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/User";
                 options.AccessDeniedPath = "/User/AccessDeniedPath";
             });
+
+            services.AddAuthentication();
 
             #endregion
 

@@ -1,9 +1,16 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Restaurant.Core.Application.Dtos.Account;
 using Restaurant.Core.Application.Enums;
 using Restaurant.Core.Application.Interfaces.Repository;
+using Restaurant.Core.Domain.Settings;
 using Restaurant.Infrastructure.Identity.Entities;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Restaurant.Infrastructure.Identity.Services
 {
@@ -11,11 +18,13 @@ namespace Restaurant.Infrastructure.Identity.Services
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly JWTSettings _jWTSettings;
 
-        public AccountService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<JWTSettings> options)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _jWTSettings = options.Value;
         }
 
         #region Async Methods
@@ -47,6 +56,9 @@ namespace Restaurant.Infrastructure.Identity.Services
                 response.Id = account.Id;
                 IList<string> roles = await _userManager.GetRolesAsync(account);
                 response.Roles = roles;
+                var securityToken = await GenerateJWToken(account);
+                response.RefreshToken = GenerateRefreshToken().Token;
+                response.Token = new JwtSecurityTokenHandler().WriteToken(securityToken);
 
                 return response;
 
@@ -130,8 +142,63 @@ namespace Restaurant.Infrastructure.Identity.Services
 
         #region Privete Methods
 
+        private async Task<JwtSecurityToken> GenerateJWToken(ApplicationUser user)
+        {
+            var userClaims = await _userManager.GetClaimsAsync(user);
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            var roleClaims = new List<Claim>();
+
+            foreach(var userClaim in userClaims)
+            {
+                roleClaims.Add(new Claim("roles", userClaim.ToString()));
+            };
+
+            var claims = new[]
+            {
+              new Claim(JwtRegisteredClaimNames.Email, user.Email),
+              new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName),
+              new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName),
+              new Claim("UserId", user.Id)
+
+            }.Union(userClaims).Union(roleClaims);
+
+            var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jWTSettings.Key));
+            var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
+
+            JwtSecurityToken token = new(
+                  audience: _jWTSettings.Audience,
+                  issuer: _jWTSettings.Issuer,
+                  expires: DateTime.UtcNow.AddMinutes(_jWTSettings.DurationInMinues),
+                  signingCredentials: signingCredentials,
+                  claims: claims
+                );
+         
 
 
+
+            return token; 
+        }
+        private RefreshToken GenerateRefreshToken()
+        {
+            return new RefreshToken
+            {
+                Expires = DateTime.UtcNow.AddDays(7),
+                Created = DateTime.UtcNow,
+                Token = GenerateRandomToken()
+            };
+        }
+
+        private string GenerateRandomToken()
+        {
+            using var rngCryptoServiceProvider = new RNGCryptoServiceProvider();
+            Byte[] bytesAray = new Byte[40];
+            rngCryptoServiceProvider.GetBytes(bytesAray);
+
+            return BitConverter.ToString(bytesAray).Replace("-","");
+
+
+        }
         #endregion
     }
 }
