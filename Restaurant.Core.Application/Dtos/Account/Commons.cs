@@ -2,7 +2,7 @@
 {
     public abstract class Commons
     {
-        public bool HasError { get; set; }
-        public string Error { get; set; }
+        public virtual bool HasError { get; set; }
+        public virtual string Error { get; set; }
     }
 }
