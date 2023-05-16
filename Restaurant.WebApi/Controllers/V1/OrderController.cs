@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Restaurant.Core.Application.Dtos.Order;
 using Restaurant.Core.Application.Features.Dish___Copia.Commands.DeleteOrder;
 using Restaurant.Core.Application.Features.Ingredient.Commands.CreateIngredient;
@@ -9,6 +10,7 @@ using Restaurant.Core.Application.Features.Order.Commands.UpdateOrder;
 
 namespace Restaurant.WebApi.Controllers.V1
 {
+    [Authorize(Roles = "Waiter")]
     public class OrderController : BaseApiController
     {
         [HttpGet]

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Restaurant.Core.Application.Dtos.Table;
+using Restaurant.Core.Application.Enums;
 using Restaurant.Core.Application.Features.Table.Commands.ChangeStatus;
 using Restaurant.Core.Application.Features.Table.Commands.CreateTableCommand;
 using Restaurant.Core.Application.Features.Table.Commands.UpdateTable;
@@ -11,6 +13,7 @@ namespace Restaurant.WebApi.Controllers.V1
 {
     public class TableController : BaseApiController
     {
+        [Authorize(Roles = "Admin,Waiter")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IList<TableResponse>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -28,6 +31,7 @@ namespace Restaurant.WebApi.Controllers.V1
             }
         }
 
+        [Authorize(Roles = "Waiter")]
         [HttpGet("{id}/GetTableOrders")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TableOrdersResponse))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -45,6 +49,7 @@ namespace Restaurant.WebApi.Controllers.V1
             }
         }
 
+        [Authorize(Roles = "Admin,Waiter")]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TableResponse))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -62,7 +67,7 @@ namespace Restaurant.WebApi.Controllers.V1
             }
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -84,7 +89,8 @@ namespace Restaurant.WebApi.Controllers.V1
                 return StatusCode(500, ex.Message);
             }
         }
-
+        
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -107,6 +113,7 @@ namespace Restaurant.WebApi.Controllers.V1
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}/ChangeTableStatus")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

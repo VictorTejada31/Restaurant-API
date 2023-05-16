@@ -2,11 +2,12 @@
 using Microsoft.AspNetCore.Identity;
 using Restaurant.Core.Application.Dtos.Account;
 using Restaurant.Core.Application.Enums;
+using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Infrastructure.Identity.Entities;
 
 namespace Restaurant.Infrastructure.Identity.Services
 {
-    public class AccountService
+    public class AccountService : IAccountService
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -129,7 +130,7 @@ namespace Restaurant.Infrastructure.Identity.Services
 
         #region Privete Methods
 
-         
+
 
         #endregion
     }

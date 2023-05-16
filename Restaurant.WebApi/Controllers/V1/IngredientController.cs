@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Restaurant.Core.Application.Dtos.Ingredient;
 using Restaurant.Core.Application.Features.Ingredient.Commands.CreateIngredient;
 using Restaurant.Core.Application.Features.Ingredient.Commands.UpdateIngredient;
@@ -7,6 +8,7 @@ using Restaurant.Core.Application.Features.Ingredient.Queries.GetIngredientById;
 
 namespace Restaurant.WebApi.Controllers.V1
 {
+    [Authorize(Roles = "Admin")]
     public class IngredientController : BaseApiController
     {
 

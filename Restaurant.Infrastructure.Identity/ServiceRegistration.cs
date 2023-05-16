@@ -2,8 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Infrastructure.Identity.Context;
 using Restaurant.Infrastructure.Identity.Entities;
+using Restaurant.Infrastructure.Identity.Services;
 
 namespace Restaurant.Infrastructure.Identity
 {
@@ -27,6 +29,8 @@ namespace Restaurant.Infrastructure.Identity
             #endregion
 
             #region Identity
+
+            services.AddTransient<IAccountService, AccountService>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityContext>()

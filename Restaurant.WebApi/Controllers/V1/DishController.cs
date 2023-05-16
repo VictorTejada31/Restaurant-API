@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Restaurant.Core.Application.Dtos.Dish;
+using Restaurant.Core.Application.Enums;
 using Restaurant.Core.Application.Features.Dish.Commands.UpdateDish;
 using Restaurant.Core.Application.Features.Ingredient.Commands.CreateIngredient;
 using Restaurant.Core.Application.Features.Ingredient.Commands.UpdateIngredient;
@@ -8,6 +10,7 @@ using Restaurant.Core.Application.Features.Ingredient.Queries.GetIngredientById;
 
 namespace Restaurant.WebApi.Controllers.V1
 {
+    [Authorize(Roles = "Admin")]
     public class DishController : BaseApiController
     {
         [HttpGet]
