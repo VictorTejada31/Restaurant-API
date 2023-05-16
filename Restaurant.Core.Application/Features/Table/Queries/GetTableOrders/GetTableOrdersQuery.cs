@@ -30,7 +30,7 @@ namespace Restaurant.Core.Application.Features.Table.Queries.GetTableOrders
 
         private async Task<TableOrdersResponse> GetAllWithFilters(int tableId)
         {
-            var tables = await _tableRepository.GetAllWithIncludesAsync(new List<string> {"Order"});
+            var tables = await _tableRepository.GetAllWithIncludesAsync(new List<string> {"Orders"});
             var list = tables.Select(table => new TableOrdersResponse
             {
                 Id = table.Id,

@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "3MbwsPj/0y9NXaiVgEqwh6NQ8o82d50K+98h4lJmD/7+h2n017YVltjeTQxoX3DFVYqSm02/FyvNIJxGGH9+tw==",
+  "dgSpecHash": "yqCLYUlq3Y3HwT25j+z++5P+wQSM6ecVr2M4ibXa3/qauvUdLVohhwJ8o+o2L5ptknO4jc1L72RkLrkLQpqd0w==",
   "success": true,
   "projectFilePath": "C:\\Users\\victo\\Desktop\\Restaurant API\\Restaurant\\Restaurant.Infrastructure.Persistence\\Restaurant.Infrastructure.Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\victo\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

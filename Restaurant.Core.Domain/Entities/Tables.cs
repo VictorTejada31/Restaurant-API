@@ -7,7 +7,7 @@ namespace Restaurant.Core.Domain.Entities
     { 
         public int Capacity { get; set; }
         public string Description { get; set; }
-        public string State { get; set; }
+        public string Status { get; set; }
 
         //Navegation Properties
         public ICollection<Order> Orders { get; set; }

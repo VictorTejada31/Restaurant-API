@@ -1,23 +1,25 @@
-﻿using Restaurant.Core.Domain.Entities;
-using Restaurant.Infrastructure.Persistence.Repositories;
+﻿using Restaurant.Core.Application.Interfaces.Repository;
+using Restaurant.Core.Domain.Entities;
+
 
 namespace Restaurant.Infrastructure.Persistence.Seeds
 {
     public static class DefaultDishCategories
     {
-        public static async void AddAsync(DishCategoryRepository repository)
+
+        public static async Task AddAsync(IDishCategoryRepository _dishCategory)
         {
             DishCategory drink = new() { Name = "Drink"};
             DishCategory main = new() { Name = "Main Dish" };
             DishCategory entree = new() { Name = "Entree" };
 
-            var dishes = await repository.GetAllAsync(); 
+            var dishes = await _dishCategory.GetAllAsync(); 
 
-            if(dishes.All(dish => dish.Id != drink.Id))
+            if(dishes.All(dish => dish.Name != drink.Name))
             {
-                await repository.AddAsync(drink);
-                await repository.AddAsync(main);
-                await repository.AddAsync(entree);
+                await _dishCategory.AddAsync(drink);
+                await _dishCategory.AddAsync(main);
+                await _dishCategory.AddAsync(entree);
 
             }
 

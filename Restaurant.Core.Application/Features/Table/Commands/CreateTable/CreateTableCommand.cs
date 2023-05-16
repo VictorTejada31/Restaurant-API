@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Restaurant.Core.Application.Enums;
 using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Core.Domain.Entities;
 
@@ -28,8 +29,9 @@ namespace Restaurant.Core.Application.Features.Table.Commands.CreateTableCommand
         
         public async Task Handle(CreateTableCommand command, CancellationToken cancellationToken)
         {
-
-            await _tableRepository.AddAsync(_mapper.Map<Tables>(command));
+            Tables table = _mapper.Map<Tables>(command);
+            table.Status = TableStatus.Available.ToString();
+            await _tableRepository.AddAsync(table);
         }
     }
 }

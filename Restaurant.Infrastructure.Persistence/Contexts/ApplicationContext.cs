@@ -90,7 +90,7 @@ namespace Restaurant.Infrastructure.Persistence.Contexts
 
             #region Order
 
-            modelBuilder.Entity<Order>().Property(o => o.State)
+            modelBuilder.Entity<Order>().Property(o => o.Status)
                 .HasMaxLength(30)
                 .IsRequired();
 
@@ -106,7 +106,7 @@ namespace Restaurant.Infrastructure.Persistence.Contexts
 
             #region Table
 
-            modelBuilder.Entity<Tables>().Property(t => t.State)
+            modelBuilder.Entity<Tables>().Property(t => t.Status)
                 .HasMaxLength(30)
                 .IsRequired();
 

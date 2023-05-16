@@ -30,7 +30,9 @@ namespace Restaurant.Core.Application.Features.Table.Commands.UpdateTable
             Tables table = await _tableRepository.GetByIdAsync(command.Id);
             if (table == null) throw new Exception($"Table with id {command.Id} not found.");
 
-            Tables tableUpdated = await _tableRepository.UpdateAsync(_mapper.Map<Tables>(command), command.Id);
+            table = _mapper.Map<Tables>(command);
+
+            Tables tableUpdated = await _tableRepository.UpdateAsync(table, command.Id);
             UpdateTableResponse response = _mapper.Map<UpdateTableResponse>(tableUpdated);
 
             return response;

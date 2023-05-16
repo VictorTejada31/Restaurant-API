@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Wd9KUAUK3KQbsMNTcfsnsrRnG9hxSpNvLNTVnpYvysIRUJdVc6wZvHGLB57WBLxqdbU3J89V69aZUMehHvlZQg==",
+  "dgSpecHash": "mQaDt3KxTG+jJe91cPkLq6LS3mNI4PzvxX0UP1gZpernnLa7poAxMqu0+msrVJcmPi0z6Hs6UoMJtO1+KSBu6g==",
   "success": true,
   "projectFilePath": "C:\\Users\\victo\\Desktop\\Restaurant API\\Restaurant\\Restaurant.Infrastructure.Identity\\Restaurant.Infrastructure.Identity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\victo\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",

@@ -39,13 +39,13 @@ namespace Restaurant.Core.Application.Features.Table.Commands.ChangeStatus
             switch (statusId)
             {
                 case 1:
-                    table.State = TableStatus.Available.ToString();
+                    table.Status = TableStatus.Available.ToString();
                     break;
                 case 2:
-                    table.State = TableStatus.InOrderingProcess.ToString();
+                    table.Status = TableStatus.InOrderingProcess.ToString();
                     break;
                 case 3:
-                    table.State = TableStatus.OrderCompleted.ToString();
+                    table.Status = TableStatus.OrderCompleted.ToString();
                     break;
             }
 

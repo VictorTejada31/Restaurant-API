@@ -6,7 +6,7 @@ namespace Restaurant.Core.Application.Dtos.Table
     {
         public int Capacity { get; set; }
         public string Description { get; set; }
-        public string State { get; set; }
+        public string Status { get; set; }
 
     }
 }

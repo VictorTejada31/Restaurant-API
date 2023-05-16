@@ -20,7 +20,7 @@ namespace Restaurant.Infrastructure.Identity
             else
             {
                 services.AddDbContext<IdentityContext>(options => options
-                .UseSqlServer(configuration.GetConnectionString("DefaultConnection"), m => m
+                .UseSqlServer(configuration.GetConnectionString("IdentityConnection"), m => m
                 .MigrationsAssembly(typeof(IdentityContext).Assembly.FullName)));
             }
 
@@ -28,9 +28,10 @@ namespace Restaurant.Infrastructure.Identity
 
             #region Identity
 
-            services.AddIdentity<ApplicationUser,ApplicationUser>()
-                .AddDefaultTokenProviders()
-                .AddEntityFrameworkStores<IdentityContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<IdentityContext>()
+                .AddDefaultTokenProviders();
+                
 
             services.AddAuthentication();
             services.ConfigureApplicationCookie(options =>
