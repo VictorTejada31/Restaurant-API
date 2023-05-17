@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Restaurant.Core.Application.Enums;
+using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Core.Domain.Entities;
 
@@ -26,8 +27,8 @@ namespace Restaurant.Core.Application.Features.Table.Commands.ChangeStatus
         public async Task Handle(ChangeStatusCommand commnad, CancellationToken cancellationToken)
         {
             Tables table = await _tableRepository.GetByIdAsync(commnad.Id);
-            if (table == null) throw new Exception("Table not found");
-            if(commnad.Id > 3) throw new Exception("Table Status not found");
+            if (table == null) throw new ApiExeption("Table not found",404);
+            if(commnad.Id > 3) throw new ApiExeption("Table Status not found",404);
 
 
             await ChangeTableStatus(table, commnad.Id);

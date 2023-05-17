@@ -1,13 +1,15 @@
 ﻿using AutoMapper;
 using MediatR;
 using Restaurant.Core.Application.Enums;
+using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Features.Order.Commands.UpdateOrder;
 using Restaurant.Core.Application.Interfaces.Repository;
+using Restaurant.Core.Application.Wrappers;
 using System.Text;
 
 namespace Restaurant.Core.Application.Features.Ingredient.Commands.UpdateIngredient
 {
-    public class UpdateOrderCommand : IRequest<UpdateOrderResponse>
+    public class UpdateOrderCommand : IRequest<Response<UpdateOrderResponse>>
     {
         public int Id { get; set; }
         public List<int> Dishes { get; set; }
@@ -16,7 +18,7 @@ namespace Restaurant.Core.Application.Features.Ingredient.Commands.UpdateIngredi
         public int TableId { get; set; }
     }
 
-    public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommand, UpdateOrderResponse>
+    public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommand, Response<UpdateOrderResponse>>
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
@@ -30,13 +32,13 @@ namespace Restaurant.Core.Application.Features.Ingredient.Commands.UpdateIngredi
             _DishRepository = dishRepository;
         }
 
-        public async Task<UpdateOrderResponse> Handle(UpdateOrderCommand command, CancellationToken cancellationToken)
+        public async Task<Response<UpdateOrderResponse>> Handle(UpdateOrderCommand command, CancellationToken cancellationToken)
         {
             Domain.Entities.Order order = await _orderRepository.GetByIdAsync(command.Id);
             Domain.Entities.Tables table = await _tableRepository.GetByIdAsync(command.TableId);
-            if (order == null) throw new Exception($"Order with id {command.Id} not found");
-            if (table == null) throw new Exception($"Table with id {command.TableId} not found");
-            if (command.Status > 2) throw new Exception($"Order Status with id {command.Status} not found");
+            if (order == null) throw new ApiExeption($"Order with id {command.Id} not found", 404);
+            if (table == null) throw new ApiExeption($"Table with id {command.TableId} not found", 404);
+            if (command.Status > 2) throw new ApiExeption($"Order Status with id {command.Status} not found", 404);
 
 
             var dishes = await _DishRepository.GetAllAsync();
@@ -49,7 +51,7 @@ namespace Restaurant.Core.Application.Features.Ingredient.Commands.UpdateIngredi
                 }
                 else
                 {
-                    throw new Exception($"Dish with id {id} not found");
+                    throw new ApiExeption($"Dish with id {id} not found",404);
                 }
             }
 
@@ -62,7 +64,7 @@ namespace Restaurant.Core.Application.Features.Ingredient.Commands.UpdateIngredi
             response.Dishes = await GetDishes(result.Dishes);
 
 
-            return response;
+            return new Response<UpdateOrderResponse>(response);
         }
 
         private async Task<List<string>> GetDishes(string dishString)

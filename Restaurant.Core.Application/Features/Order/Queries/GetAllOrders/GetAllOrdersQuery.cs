@@ -1,17 +1,18 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Restaurant.Core.Application.Dtos.Order;
 using Restaurant.Core.Application.Enums;
+using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Interfaces.Repository;
+using Restaurant.Core.Application.Wrappers;
 
 namespace Restaurant.Core.Application.Features.Ingredient.Queries.GetAllIngredient
 {
-    public class GetAllOrdersQuery : IRequest<IList<OrderResponse>>
+    public class GetAllOrdersQuery : IRequest<Response<IList<OrderResponse>>>
     {
 
     }
 
-    public class GetAllOrdersQueryHandler : IRequestHandler<GetAllOrdersQuery, IList<OrderResponse>>
+    public class GetAllOrdersQueryHandler : IRequestHandler<GetAllOrdersQuery, Response<IList<OrderResponse>>>
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IDishRepository _dishRepository;
@@ -20,13 +21,13 @@ namespace Restaurant.Core.Application.Features.Ingredient.Queries.GetAllIngredie
             _orderRepository = orderRepository;
             _dishRepository = dishRepository;
         }
-        public async Task<IList<OrderResponse>> Handle(GetAllOrdersQuery request, CancellationToken cancellationToken)
+        public async Task<Response<IList<OrderResponse>>> Handle(GetAllOrdersQuery request, CancellationToken cancellationToken)
         {
             List<Domain.Entities.Order> orders = await _orderRepository.GetAllWithIncludesAsync(new List<string> {"Table"});
-            if (orders == null || orders.Count == 0) throw new Exception("Orders not found");
-           
+            if (orders == null || orders.Count == 0) throw new ApiExeption("Orders not found",404);
 
-            return await GetAllWithInclude(orders);
+            
+            return new Response<IList<OrderResponse>>(await GetAllWithInclude(orders));
         }
 
         private async Task<IList<OrderResponse>> GetAllWithInclude(List<Domain.Entities.Order> orders)

@@ -2,17 +2,18 @@
 using MediatR;
 using Restaurant.Core.Application.Dtos.Order;
 using Restaurant.Core.Application.Enums;
+using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Interfaces.Repository;
-using Restaurant.Core.Domain.Entities;
+using Restaurant.Core.Application.Wrappers;
 
 namespace Restaurant.Core.Application.Features.Ingredient.Queries.GetIngredientById
 {
-    public class GetOrderByIdQuery : IRequest<OrderResponse>
+    public class GetOrderByIdQuery : IRequest<Response<OrderResponse>>
     {
         public int Id { get; set; }
     }
 
-    public class GetOrderByIdQueryHandler : IRequestHandler<GetOrderByIdQuery, OrderResponse>
+    public class GetOrderByIdQueryHandler : IRequestHandler<GetOrderByIdQuery, Response<OrderResponse>>
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
@@ -23,17 +24,17 @@ namespace Restaurant.Core.Application.Features.Ingredient.Queries.GetIngredientB
             _mapper = mapper;
             _dishRepository = dishRepository;
         }
-        public async Task<OrderResponse> Handle(GetOrderByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Response<OrderResponse>> Handle(GetOrderByIdQuery request, CancellationToken cancellationToken)
         {
             Domain.Entities.Order order = await _orderRepository.GetByIdAsync(request.Id);
-            if (order == null ) throw new Exception($"Dish with id {request.Id} not found");
+            if (order == null ) throw new ApiExeption($"Dish with id {request.Id} not found", 404);
             OrderResponse response = _mapper.Map<OrderResponse>(await _orderRepository.GetByIdAsync(request.Id));
             
           
             response.Dishes = await GetDishes(order);
             response.Status = GetOrderStatus(order.Status);
 
-            return response;
+            return new Response<OrderResponse>(response);
         }
 
         private async Task<List<string>> GetDishes(Domain.Entities.Order order)

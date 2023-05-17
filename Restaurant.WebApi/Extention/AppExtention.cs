@@ -1,4 +1,6 @@
-﻿namespace Restaurant.WebApi.Extention
+﻿using Restaurant.WebApi.Middlewares;
+
+namespace Restaurant.WebApi.Extention
 {
     public static class AppExtention
     {
@@ -9,6 +11,11 @@
             {
                 options.SwaggerEndpoint("swagger/v1/swagger.json", "Restaurant");
             });
+        }
+
+        public static void UseErrorHandlingMiddleware(this IApplicationBuilder app)
+        {
+            app.UseMiddleware<ErrorHandlerMiddleware>();
         }
     }
 }

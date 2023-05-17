@@ -14,6 +14,7 @@ namespace Restaurant.Infrastructure.Identity.Seeds
                 FirstName = "John",
                 LastName = "Doe",
                 Email = "waiter@restaurant.com",
+                UserName = "waiter",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,
             };

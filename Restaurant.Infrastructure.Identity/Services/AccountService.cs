@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Restaurant.Core.Application.Dtos.Account;
@@ -56,9 +55,9 @@ namespace Restaurant.Infrastructure.Identity.Services
                 response.Id = account.Id;
                 IList<string> roles = await _userManager.GetRolesAsync(account);
                 response.Roles = roles;
-                var securityToken = await GenerateJWToken(account);
+                JwtSecurityToken securityToken = await GenerateJWToken(account);
                 response.RefreshToken = GenerateRefreshToken().Token;
-                response.Token = new JwtSecurityTokenHandler().WriteToken(securityToken);
+                response.JwtToken = new JwtSecurityTokenHandler().WriteToken(securityToken);
 
                 return response;
 
@@ -86,8 +85,10 @@ namespace Restaurant.Infrastructure.Identity.Services
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 Email = request.Email,
+                UserName = request.Email,
                 PhoneNumber = request.Phone,
                 EmailConfirmed = true
+                
             };
 
             IdentityResult result = await _userManager.CreateAsync(newWaiter, request.Password);
@@ -120,6 +121,7 @@ namespace Restaurant.Infrastructure.Identity.Services
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 Email = request.Email,
+                UserName = request.Email,
                 PhoneNumber = request.Phone,
                 EmailConfirmed = true
             };
@@ -149,9 +151,9 @@ namespace Restaurant.Infrastructure.Identity.Services
 
             var roleClaims = new List<Claim>();
 
-            foreach(var userClaim in userClaims)
+            foreach(var role in userRoles)
             {
-                roleClaims.Add(new Claim("roles", userClaim.ToString()));
+                roleClaims.Add(new Claim("roles", role.ToString()));
             };
 
             var claims = new[]

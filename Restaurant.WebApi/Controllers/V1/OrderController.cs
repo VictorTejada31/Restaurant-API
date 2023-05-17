@@ -7,6 +7,7 @@ using Restaurant.Core.Application.Features.Ingredient.Commands.UpdateIngredient;
 using Restaurant.Core.Application.Features.Ingredient.Queries.GetAllIngredient;
 using Restaurant.Core.Application.Features.Ingredient.Queries.GetIngredientById;
 using Restaurant.Core.Application.Features.Order.Commands.UpdateOrder;
+using Restaurant.Core.Application.Wrappers;
 
 namespace Restaurant.WebApi.Controllers.V1
 {
@@ -19,15 +20,8 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAll()
         {
-            try
-            {
-                IList<OrderResponse> response = await Mediator.Send(new GetAllOrdersQuery());
-                return response != null || response.Count == 0 ? Ok(response) : NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+            Response<IList<OrderResponse>> response = await Mediator.Send(new GetAllOrdersQuery());
+            return response != null ? Ok(response) : NotFound();
         }
 
         [HttpGet("{id}")]
@@ -36,15 +30,8 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetById(int id)
         {
-            try
-            {
-                OrderResponse response = await Mediator.Send(new GetOrderByIdQuery() { Id = id });
-                return response != null ? Ok(response) : NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+           Response<OrderResponse> response = await Mediator.Send(new GetOrderByIdQuery() { Id = id });
+           return response != null ? Ok(response) : NotFound();
         }
 
         [HttpPost]
@@ -53,20 +40,14 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Post(CreateOrderCommand command)
         {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
 
-                await Mediator.Send(command);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+          if (!ModelState.IsValid)
+          {
+            return BadRequest();
+          }
+
+          await Mediator.Send(command);
+          return NoContent();
         }
 
         [HttpPut("{id}")]
@@ -75,20 +56,14 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Put(UpdateOrderCommand command, int Id)
         {
-            try
-            {
-                if (!ModelState.IsValid || command.Id != Id)
-                {
-                    return BadRequest();
-                }
 
-                var result = await Mediator.Send(command);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+          if (!ModelState.IsValid || command.Id != Id)
+          {
+           return BadRequest();
+          }
+
+           var result = await Mediator.Send(command);
+           return Ok(result);
         }
 
         [HttpDelete("{id}")]
@@ -96,15 +71,8 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Delete(int Id)
         {
-            try
-            {
-                await Mediator.Send(new DeleteOrderCommand() { Id = Id });
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+           await Mediator.Send(new DeleteOrderCommand() { Id = Id });
+           return NoContent();
         }
     }
 }

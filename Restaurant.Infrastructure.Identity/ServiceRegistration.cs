@@ -8,12 +8,12 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Restaurant.Core.Application.Dtos.Account;
 using Restaurant.Core.Application.Interfaces.Repository;
+using Restaurant.Core.Application.Wrappers;
 using Restaurant.Core.Domain.Settings;
 using Restaurant.Infrastructure.Identity.Context;
 using Restaurant.Infrastructure.Identity.Entities;
 using Restaurant.Infrastructure.Identity.Services;
 using System.Text;
-using System.Text.Json.Serialization;
 
 namespace Restaurant.Infrastructure.Identity
 {
@@ -44,12 +44,6 @@ namespace Restaurant.Infrastructure.Identity
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityContext>()
                 .AddDefaultTokenProviders();
-                
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = "/User";
-                options.AccessDeniedPath = "/User/AccessDeniedPath";
-            });
 
             services.AddAuthentication(options =>
             {
@@ -59,49 +53,45 @@ namespace Restaurant.Infrastructure.Identity
             {
                 options.RequireHttpsMetadata = false;
                 options.SaveToken = false;
-                options.TokenValidationParameters = new TokenValidationParameters()
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateAudience = true,
-                    ValidateIssuer = true,
-                    ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero,
-
-                    ValidAudience = configuration["JWTSettings:Audience"],
                     ValidIssuer = configuration["JWTSettings:Issuer"],
+                    ValidAudience = configuration["JWTSettings:Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTSettings:Key"]))
-
                 };
-
-                options.Events = new JwtBearerEvents
+                options.Events = new JwtBearerEvents()
                 {
-                    OnAuthenticationFailed = c => {
-
+                    OnAuthenticationFailed = c =>
+                    {
                         c.NoResult();
-                        c.Response.StatusCode = StatusCodes.Status500InternalServerError;
+                        c.Response.StatusCode = 500;
                         c.Response.ContentType = "text/plain";
                         return c.Response.WriteAsync(c.Exception.ToString());
-                    
                     },
                     OnChallenge = c =>
                     {
                         c.HandleResponse();
-                        c.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                        c.Response.StatusCode = 401;
                         c.Response.ContentType = "application/json";
-                        var result = JsonConvert.SerializeObject(new JwtResponse { HasError = true, Error = "You are Unauthorized."});
+                        var result = JsonConvert.SerializeObject(new Response<string> ("You are not Authorized"));
                         return c.Response.WriteAsync(result);
                     },
                     OnForbidden = c =>
                     {
-                        c.Response.StatusCode = StatusCodes.Status403Forbidden;
+                        c.Response.StatusCode = 403;
                         c.Response.ContentType = "application/json";
-                        var result = JsonConvert.SerializeObject(new JwtResponse { HasError = true, Error = "You can't access to this end point." });
+                        var result = JsonConvert.SerializeObject(new Response<string>("You are not Authorized to use this resource"));
                         return c.Response.WriteAsync(result);
                     }
-
                 };
+
             });
-          
+
 
             #endregion
 

@@ -21,14 +21,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddApplicationLayer();
 builder.Services.AddIndentityInfras(builder.Configuration);
 builder.Services.AddPersistenceInfras(builder.Configuration);
+builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGenExtention();
 builder.Services.AddApiVertioningExtention();
-builder.Services.AddAuthentication();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddHealthChecks();
 builder.Services.AddSession();
-builder.Services.AddControllers().AddJsonOptions(x =>
-                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 
 
 var app = builder.Build();
@@ -64,8 +63,10 @@ else
 
 app.UseHttpsRedirection();
 app.UseSwaggerGenExtention();
+app.UseErrorHandlingMiddleware();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseSession();
 app.UseHealthChecks("/Health");
 app.UseApiVersioning();
 app.MapControllers();

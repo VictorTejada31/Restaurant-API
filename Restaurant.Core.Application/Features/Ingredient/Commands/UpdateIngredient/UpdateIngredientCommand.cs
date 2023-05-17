@@ -1,17 +1,18 @@
 ﻿using AutoMapper;
 using MediatR;
-using Restaurant.Core.Application.Dtos.Ingredient;
+using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Interfaces.Repository;
+using Restaurant.Core.Application.Wrappers;
 
 namespace Restaurant.Core.Application.Features.Ingredient.Commands.UpdateIngredient
 {
-    public class UpdateIngredientCommand : IRequest<UpdateIngredientResponse>
+    public class UpdateIngredientCommand : IRequest<Response<UpdateIngredientResponse>>
     {
         public int Id { get; set; }
         public string Name { get; set; }
     }
 
-    public class UpdateIngredientCommandHandler : IRequestHandler<UpdateIngredientCommand, UpdateIngredientResponse>
+    public class UpdateIngredientCommandHandler : IRequestHandler<UpdateIngredientCommand, Response<UpdateIngredientResponse>>
     {
         private readonly IIngredientRepository _ingredientRepository;
         private readonly IMapper _mapper;
@@ -21,15 +22,15 @@ namespace Restaurant.Core.Application.Features.Ingredient.Commands.UpdateIngredi
             _mapper = mapper;
         }
 
-        public async Task<UpdateIngredientResponse> Handle(UpdateIngredientCommand command, CancellationToken cancellationToken)
+        public async Task<Response<UpdateIngredientResponse>> Handle(UpdateIngredientCommand command, CancellationToken cancellationToken)
         {
             Domain.Entities.Ingredient ingredient = await _ingredientRepository.GetByIdAsync(command.Id);
-            if (ingredient == null) throw new Exception($"Ingredient with id {command.Id} not found");
+            if (ingredient == null) throw new ApiExeption($"Ingredient with id {command.Id} not found",404);
 
             var result = await _ingredientRepository.UpdateAsync(_mapper.Map<Domain.Entities.Ingredient>(command),command.Id);
             UpdateIngredientResponse response = _mapper.Map<UpdateIngredientResponse>(result);
 
-            return response;
+            return new Response<UpdateIngredientResponse>(response);
         }
     }
 }

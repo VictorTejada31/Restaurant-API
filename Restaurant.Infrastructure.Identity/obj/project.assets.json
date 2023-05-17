@@ -3480,6 +3480,7 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.16",
       "Microsoft.EntityFrameworkCore.InMemory >= 6.0.16",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.16",
+      "Microsoft.Extensions.DependencyInjection >= 6.0.1",
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 6.0.0",
       "Newtonsoft.Json >= 13.0.1",
       "Restaurant.Core.Application >= 1.0.0",
@@ -3552,6 +3553,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[6.0.16, )"
+          },
+          "Microsoft.Extensions.DependencyInjection": {
+            "target": "Package",
+            "version": "[6.0.1, )"
           },
           "Microsoft.Extensions.Options.ConfigurationExtensions": {
             "target": "Package",

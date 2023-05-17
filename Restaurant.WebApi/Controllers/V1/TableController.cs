@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Restaurant.Core.Application.Dtos.Table;
-using Restaurant.Core.Application.Enums;
 using Restaurant.Core.Application.Features.Table.Commands.ChangeStatus;
 using Restaurant.Core.Application.Features.Table.Commands.CreateTableCommand;
 using Restaurant.Core.Application.Features.Table.Commands.UpdateTable;
 using Restaurant.Core.Application.Features.Table.Queries.GetAllById;
 using Restaurant.Core.Application.Features.Table.Queries.GetAllTables;
 using Restaurant.Core.Application.Features.Table.Queries.GetTableOrders;
+using Restaurant.Core.Application.Wrappers;
 
 namespace Restaurant.WebApi.Controllers.V1
 {
@@ -20,15 +20,8 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAll()
         {
-            try
-            {
-                IList<TableResponse> response = await Mediator.Send(new GetAllTablesQuery());
-                return response != null || response.Count != 0 ? Ok(response) : NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+           Response<IList<TableResponse>> response = await Mediator.Send(new GetAllTablesQuery());
+           return Ok(response);
         }
 
         [Authorize(Roles = "Waiter")]
@@ -38,15 +31,9 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetTableOrders(int id)
         {
-            try
-            {
-                TableOrdersResponse response = await Mediator.Send(new GetTableOrdersQuery() { Id = id });
-                return response != null ? Ok(response) : NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+            Response<TableOrdersResponse> response = await Mediator.Send(new GetTableOrdersQuery() { Id = id });
+            return response != null ? Ok(response) : NotFound();
+
         }
 
         [Authorize(Roles = "Admin,Waiter")]
@@ -56,15 +43,9 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetById(int id)
         {
-            try
-            {
-                TableResponse response = await Mediator.Send(new GetTableByIdQuery() { Id = id });
-                return response != null ? Ok(response) : NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+
+            Response<TableResponse> response = await Mediator.Send(new GetTableByIdQuery() { Id = id });
+            return response != null ? Ok(response) : NotFound();
         }
 
         [Authorize(Roles = "Admin")]
@@ -74,20 +55,15 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Post(CreateTableCommand command)
         {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
 
-                await Mediator.Send(command);
-                return NoContent();
-            }
-            catch (Exception ex)
+            if (!ModelState.IsValid)
             {
-                return StatusCode(500, ex.Message);
+               return BadRequest();
             }
+
+             await Mediator.Send(command);
+             return NoContent();
+            
         }
         
         [Authorize(Roles = "Admin")]
@@ -97,20 +73,13 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Put(UpdateTableCommand command, int Id)
         {
-            try
+            if (!ModelState.IsValid || command.Id != Id)
             {
-                if (!ModelState.IsValid || command.Id != Id)
-                {
-                    return BadRequest();
-                }
+              return BadRequest();
+            }
 
-                await Mediator.Send(command);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+            await Mediator.Send(command);
+            return NoContent();
         }
 
         [Authorize(Roles = "Admin")]
@@ -120,20 +89,13 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> ChangeTableStatus(ChangeStatusCommand command, int id)
         {
-            try
+            if (!ModelState.IsValid || command.Id != id)
             {
-                if (!ModelState.IsValid || command.Id != id)
-                {
-                    return BadRequest();
-                }
+              return BadRequest();
+            }
 
-                await Mediator.Send(command);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+            await Mediator.Send(command);
+            return NoContent();
         }
 
     }

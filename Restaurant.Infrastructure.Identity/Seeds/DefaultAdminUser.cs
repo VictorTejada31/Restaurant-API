@@ -9,10 +9,11 @@ namespace Restaurant.Infrastructure.Identity.Seeds
         public static async Task AddAsync(UserManager<ApplicationUser> userManager)
         {
             ApplicationUser user = new() {
-                 
+
                 FirstName = "John",
                 LastName = "Doe",
                 Email = "admin@restaurant.com",
+                UserName = "admin",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,
             };

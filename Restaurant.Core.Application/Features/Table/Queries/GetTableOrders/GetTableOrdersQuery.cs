@@ -1,16 +1,18 @@
 ﻿using AutoMapper;
 using MediatR;
 using Restaurant.Core.Application.Dtos.Table;
+using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Interfaces.Repository;
+using Restaurant.Core.Application.Wrappers;
 
 namespace Restaurant.Core.Application.Features.Table.Queries.GetTableOrders
 {
-    public class GetTableOrdersQuery : IRequest<TableOrdersResponse>
+    public class GetTableOrdersQuery : IRequest<Response<TableOrdersResponse>>
     {
         public int Id { get; set; }
     }
 
-    public class GetTableOrdersQueryHandler : IRequestHandler<GetTableOrdersQuery, TableOrdersResponse>
+    public class GetTableOrdersQueryHandler : IRequestHandler<GetTableOrdersQuery, Response<TableOrdersResponse>>
     {
         private readonly ITableRepository _tableRepository;
 
@@ -18,13 +20,13 @@ namespace Restaurant.Core.Application.Features.Table.Queries.GetTableOrders
         {
             _tableRepository = tableRepository;
         }
-        public async Task<TableOrdersResponse> Handle(GetTableOrdersQuery request, CancellationToken cancellationToken)
+        public async Task<Response<TableOrdersResponse>> Handle(GetTableOrdersQuery request, CancellationToken cancellationToken)
         {
             TableOrdersResponse response = await GetAllWithFilters(request.Id);
-            if (response == null) throw new Exception("Table not Found");
-            if (response != null && response.Orders.Count == 0) throw new Exception("This table has no orders in progress");
+            if (response == null) throw new ApiExeption("Table not Found", 404);
+            if (response != null && response.Orders.Count == 0) throw new ApiExeption("This table has no orders in progress", 404);
 
-            return response;
+            return new Response<TableOrdersResponse>(await GetAllWithFilters(request.Id));
 
         }
 
