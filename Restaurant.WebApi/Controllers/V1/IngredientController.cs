@@ -12,6 +12,8 @@ using System.Net.Mime;
 namespace Restaurant.WebApi.Controllers.V1
 {
     [Authorize(Roles = "Admin")]
+    [SwaggerTag("Ingredient Maintenance")]
+
     public class IngredientController : BaseApiController
     {
 

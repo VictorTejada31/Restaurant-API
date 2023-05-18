@@ -13,6 +13,7 @@ using System.Net.Mime;
 
 namespace Restaurant.WebApi.Controllers.V1
 {
+    [SwaggerTag("Table Maintenance")]
     public class TableController : BaseApiController
     {
         [Authorize(Roles = "Admin,Waiter")]

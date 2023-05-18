@@ -14,6 +14,8 @@ using System.Net.Mime;
 namespace Restaurant.WebApi.Controllers.V1
 {
     [Authorize(Roles = "Waiter")]
+    [SwaggerTag("Order Maintenance")]
+
     public class OrderController : BaseApiController
     {
         [HttpGet]
