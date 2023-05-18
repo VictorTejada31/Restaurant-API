@@ -4,12 +4,29 @@ using Restaurant.Core.Application.Enums;
 using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Core.Domain.Entities;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Restaurant.Core.Application.Features.Table.Commands.ChangeStatus
 {
+    //<summary>
+    // Parameters to change table status.
+    //</summary>
     public class ChangeStatusCommand : IRequest
     {
+        [SwaggerParameter(
+           Description = "Table Id"
+           )]
+        //<example>
+        // 2
+        //</example>
         public int Id { get; set; }
+
+        [SwaggerParameter(
+           Description = "Table Status Id"
+           )]
+        //<example>
+        // 1
+        //</example>
         public int StatusId { get; set; }
 
     }

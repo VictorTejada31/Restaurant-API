@@ -1,21 +1,67 @@
 ﻿using AutoMapper;
 using MediatR;
-using Restaurant.Core.Application.Dtos.Dish;
 using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Features.Dish.Commands.UpdateDish;
 using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Core.Application.Wrappers;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Text;
 
 namespace Restaurant.Core.Application.Features.Ingredient.Commands.UpdateIngredient
 {
+    //<summary>
+    // Parameters to update a Dish.
+    //</summary>
     public class UpdateDishCommand : IRequest<Response<UpdateDishResponse>>
     {
+        [SwaggerParameter(
+            Description = "Dish Id"
+            )]
+
+        //<example>
+        // 2
+        //</example>
         public int Id { get; set; }
+
+        [SwaggerParameter(
+            Description = "Dish Name"
+            )]
+
+        //<example>
+        // Pizza
+        //</example>
         public string Name { get; set; }
+
+        [SwaggerParameter(
+            Description = "Dish Price"
+            )]
+        //<example>
+        // 5
+        //</example>
         public double Price { get; set; }
+
+        [SwaggerParameter(
+           Description = "For how many people"
+           )]
+        //<example>
+        // 3.00
+        //</example>
         public int PeopleAmount { get; set; }
+
+        [SwaggerParameter(
+         Description = "Ingredients Ids"
+         )]
+        //<example>
+        // {1,2,5}
+        //</example>
         public List<int> Ingredients { get; set; }
+
+        [SwaggerParameter(
+            Description = "Dish Category Id"
+            )]
+        //<example>
+        // 2
+        //</example>
         public int DishCategoryId { get; set; }
     }
 

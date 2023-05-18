@@ -8,6 +8,8 @@ using Restaurant.Core.Application.Features.Table.Queries.GetAllById;
 using Restaurant.Core.Application.Features.Table.Queries.GetAllTables;
 using Restaurant.Core.Application.Features.Table.Queries.GetTableOrders;
 using Restaurant.Core.Application.Wrappers;
+using Swashbuckle.AspNetCore.Annotations;
+using System.Net.Mime;
 
 namespace Restaurant.WebApi.Controllers.V1
 {
@@ -18,6 +20,10 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IList<TableResponse>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Table List",
+            Description = "Return all tables."
+            )]
         public async Task<IActionResult> GetAll()
         {
            Response<IList<TableResponse>> response = await Mediator.Send(new GetAllTablesQuery());
@@ -29,6 +35,10 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TableOrdersResponse))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Table Orders By Id",
+            Description = "Return all orders from a specified table."
+            )]
         public async Task<IActionResult> GetTableOrders(int id)
         {
             Response<TableOrdersResponse> response = await Mediator.Send(new GetTableOrdersQuery() { Id = id });
@@ -41,6 +51,10 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TableResponse))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Table By Id",
+            Description = "Return a specified table."
+            )]
         public async Task<IActionResult> GetById(int id)
         {
 
@@ -53,7 +67,12 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Post(CreateTableCommand command)
+        [Consumes(MediaTypeNames.Application.Json)]
+        [SwaggerOperation(
+            Summary = "Create Order",
+            Description = "Receives the necessary parameters to create a new table."
+            )]
+        public async Task<IActionResult> Post([FromBody]CreateTableCommand command)
         {
 
             if (!ModelState.IsValid)
@@ -71,7 +90,12 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Put(UpdateTableCommand command, int Id)
+        [Consumes(MediaTypeNames.Application.Json)]
+        [SwaggerOperation(
+            Summary = "Update Table",
+            Description = "Receives the necessary parameters to update a specified table."
+            )]
+        public async Task<IActionResult> Put([FromBody]UpdateTableCommand command, int Id)
         {
             if (!ModelState.IsValid || command.Id != Id)
             {
@@ -87,7 +111,12 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> ChangeTableStatus(ChangeStatusCommand command, int id)
+        [Consumes(MediaTypeNames.Application.Json)]
+        [SwaggerOperation(
+            Summary = "Change Table Status",
+            Description = "Receives the necessary parameters to change the status of a specified table."
+            )]
+        public async Task<IActionResult> ChangeTableStatus([FromBody]ChangeStatusCommand command, int id)
         {
             if (!ModelState.IsValid || command.Id != id)
             {

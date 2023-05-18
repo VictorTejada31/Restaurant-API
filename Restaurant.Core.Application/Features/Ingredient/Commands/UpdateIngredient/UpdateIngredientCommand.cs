@@ -3,12 +3,31 @@ using MediatR;
 using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Core.Application.Wrappers;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Restaurant.Core.Application.Features.Ingredient.Commands.UpdateIngredient
 {
+    //<summary>
+    // Parameters to create a new ingredient.
+    //</summary>
     public class UpdateIngredientCommand : IRequest<Response<UpdateIngredientResponse>>
     {
+        [SwaggerParameter(
+            Description = "Ingredient Id"
+            )]
+
+        //<example>
+        // 3
+        //</example>
         public int Id { get; set; }
+
+        [SwaggerParameter(
+            Description = "Ingredient Name"
+            )]
+
+        //<example>
+        // Salt
+        //</example>
         public string Name { get; set; }
     }
 

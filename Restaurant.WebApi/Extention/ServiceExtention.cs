@@ -24,6 +24,7 @@ namespace Restaurant.WebApi.Extention
                 });
 
                 options.DescribeAllParametersInCamelCase();
+                options.EnableAnnotations();
 
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {

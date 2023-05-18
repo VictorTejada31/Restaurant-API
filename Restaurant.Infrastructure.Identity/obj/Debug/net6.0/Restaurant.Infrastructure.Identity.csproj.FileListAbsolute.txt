@@ -4,6 +4,7 @@ C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Ident
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Identity\bin\Debug\net6.0\Restaurant.Core.Application.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Identity\bin\Debug\net6.0\Restaurant.Core.Domain.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Identity\bin\Debug\net6.0\Restaurant.Core.Application.pdb
+C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Identity\bin\Debug\net6.0\Restaurant.Core.Application.xml
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Identity\bin\Debug\net6.0\Restaurant.Core.Domain.pdb
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Identity\obj\Debug\net6.0\Restaurant.Infrastructure.Identity.csproj.AssemblyReference.cache
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Identity\obj\Debug\net6.0\Restaurant.Infrastructure.Identity.GeneratedMSBuildEditorConfig.editorconfig

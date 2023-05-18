@@ -7,6 +7,7 @@ C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\Restaurant.WebApi.pdb
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\FluentValidation.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\Humanizer.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\MediatR.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\MediatR.Contracts.dll
@@ -79,6 +80,7 @@ C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\NuGet.ProjectModel.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\NuGet.Protocol.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\NuGet.Versioning.dll
+C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.Annotations.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -269,6 +271,7 @@ C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\Restaurant.Infrastructure.Identity.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\Restaurant.Infrastructure.Persistence.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\Restaurant.Core.Application.pdb
+C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\Restaurant.Core.Application.xml
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\Restaurant.Infrastructure.Identity.pdb
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\Restaurant.Infrastructure.Persistence.pdb
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.WebApi\bin\Debug\net6.0\Restaurant.Core.Domain.pdb

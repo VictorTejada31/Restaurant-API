@@ -1,6 +1,7 @@
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Core.Application\bin\Debug\net6.0\Restaurant.Core.Application.deps.json
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Core.Application\bin\Debug\net6.0\Restaurant.Core.Application.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Core.Application\bin\Debug\net6.0\Restaurant.Core.Application.pdb
+C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Core.Application\bin\Debug\net6.0\Restaurant.Core.Application.xml
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Core.Application\bin\Debug\net6.0\Restaurant.Core.Domain.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Core.Application\bin\Debug\net6.0\Restaurant.Core.Domain.pdb
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Core.Application\obj\Debug\net6.0\Restaurant.Core.Application.csproj.AssemblyReference.cache
@@ -11,5 +12,6 @@ C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Core.Application\obj
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Core.Application\obj\Debug\net6.0\Restaurant.Core.Application.csproj.CopyComplete
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Core.Application\obj\Debug\net6.0\Restaurant.Core.Application.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Core.Application\obj\Debug\net6.0\refint\Restaurant.Core.Application.dll
+C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Core.Application\obj\Debug\net6.0\Restaurant.Core.Application.xml
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Core.Application\obj\Debug\net6.0\Restaurant.Core.Application.pdb
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Core.Application\obj\Debug\net6.0\ref\Restaurant.Core.Application.dll

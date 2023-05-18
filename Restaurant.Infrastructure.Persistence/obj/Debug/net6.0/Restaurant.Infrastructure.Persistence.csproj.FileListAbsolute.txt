@@ -4,6 +4,7 @@ C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Persi
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Persistence\bin\Debug\net6.0\Restaurant.Core.Application.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Persistence\bin\Debug\net6.0\Restaurant.Core.Domain.dll
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Persistence\bin\Debug\net6.0\Restaurant.Core.Application.pdb
+C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Persistence\bin\Debug\net6.0\Restaurant.Core.Application.xml
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Persistence\bin\Debug\net6.0\Restaurant.Core.Domain.pdb
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Persistence\obj\Debug\net6.0\Restaurant.Infrastructure.Persistence.csproj.AssemblyReference.cache
 C:\Users\victo\Desktop\Restaurant API\Restaurant\Restaurant.Infrastructure.Persistence\obj\Debug\net6.0\Restaurant.Infrastructure.Persistence.GeneratedMSBuildEditorConfig.editorconfig

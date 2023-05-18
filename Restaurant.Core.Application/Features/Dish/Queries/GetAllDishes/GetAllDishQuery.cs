@@ -1,12 +1,9 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Restaurant.Core.Application.Dtos.Dish;
 using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Core.Application.Wrappers;
-using Restaurant.Core.Domain.Entities;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
+
 
 namespace Restaurant.Core.Application.Features.Ingredient.Queries.GetAllIngredient
 {

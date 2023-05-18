@@ -1,4 +1,6 @@
-﻿using Restaurant.WebApi.Middlewares;
+﻿
+using Restaurant.WebApi.Middlewares;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace Restaurant.WebApi.Extention
 {
@@ -10,6 +12,7 @@ namespace Restaurant.WebApi.Extention
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("swagger/v1/swagger.json", "Restaurant");
+                options.DefaultModelRendering(ModelRendering.Model);
             });
         }
 

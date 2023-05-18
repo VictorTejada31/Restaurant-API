@@ -7,16 +7,23 @@ using Restaurant.Core.Application.Features.Ingredient.Commands.UpdateIngredient;
 using Restaurant.Core.Application.Features.Ingredient.Queries.GetAllIngredient;
 using Restaurant.Core.Application.Features.Ingredient.Queries.GetIngredientById;
 using Restaurant.Core.Application.Wrappers;
+using Swashbuckle.AspNetCore.Annotations;
+using System.Net.Mime;
 
 namespace Restaurant.WebApi.Controllers.V1
 {
     [Authorize(Roles = "Admin")]
+    [SwaggerTag("Dish Maintenance")]
     public class DishController : BaseApiController
     {
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IList<DishResponse>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Dish List",
+            Description = "Return all available dishes."
+            )]
         public async Task<IActionResult> GetAll()
         {
 
@@ -28,6 +35,10 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(DishResponse))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Dish By Id",
+            Description = "Return a specified dish"
+            )]
         public async Task<IActionResult> GetById(int id)
         {
 
@@ -39,7 +50,12 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Post(CreateDishCommand command)
+        [Consumes(MediaTypeNames.Application.Json)]
+        [SwaggerOperation(
+            Summary = "Create Dish",
+            Description = "Receives the necessary parameters to create a new dish."
+            )]
+        public async Task<IActionResult> Post([FromBody]CreateDishCommand command)
         {
                 if (!ModelState.IsValid)
                 {
@@ -54,7 +70,12 @@ namespace Restaurant.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status200OK,Type = typeof(UpdateDishResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Put(UpdateDishCommand command, int Id)
+        [Consumes(MediaTypeNames.Application.Json)]
+        [SwaggerOperation(
+            Summary = "Update Dish",
+            Description = "Receives the necessary parameters to update a specified dish."
+            )]
+        public async Task<IActionResult> Put([FromBody]UpdateDishCommand command, int Id)
         {
             try
             {

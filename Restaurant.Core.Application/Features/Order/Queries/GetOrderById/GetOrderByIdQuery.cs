@@ -5,11 +5,21 @@ using Restaurant.Core.Application.Enums;
 using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Core.Application.Wrappers;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Restaurant.Core.Application.Features.Ingredient.Queries.GetIngredientById
 {
+    //<summary>
+    // Parameters to a specified order.
+    //</summary>
     public class GetOrderByIdQuery : IRequest<Response<OrderResponse>>
     {
+        [SwaggerParameter(
+           Description = "Order Id"
+           )]
+        //<example>
+        // 2
+        //</example>
         public int Id { get; set; }
     }
 

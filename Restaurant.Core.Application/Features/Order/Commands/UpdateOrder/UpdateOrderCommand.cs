@@ -5,16 +5,61 @@ using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Features.Order.Commands.UpdateOrder;
 using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Core.Application.Wrappers;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Text;
 
 namespace Restaurant.Core.Application.Features.Ingredient.Commands.UpdateIngredient
 {
+    //<summary>
+    // Parameters to update order.
+    //</summary>
     public class UpdateOrderCommand : IRequest<Response<UpdateOrderResponse>>
     {
+        [SwaggerParameter(
+           Description = "Order Id"
+           )]
+        //<example>
+        // 2
+        //</example>
         public int Id { get; set; }
+
+        [SwaggerParameter(
+           Description = "Dish id"
+           )]
+
+        //<example>
+        // {2,1}
+        //</example>
+
         public List<int> Dishes { get; set; }
+
+        [SwaggerParameter(
+           Description = "Order Sub Total"
+           )]
+
+        //<example>
+        // 6.00
+        //</example>
+
         public double SubTotal { get; set; }
+
+        [SwaggerParameter(
+            Description = "Status Id"
+            )]
+
+        //<example>
+        // 2
+        //</example>
+
         public int Status { get; set; }
+
+        [SwaggerParameter(
+            Description = "Table Id"
+            )]
+
+        //<example>
+        // 2
+        //</example>
         public int TableId { get; set; }
     }
 

@@ -1,14 +1,42 @@
 ﻿using AutoMapper;
 using MediatR;
 using Restaurant.Core.Application.Interfaces.Repository;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Text;
 
 namespace Restaurant.Core.Application.Features.Ingredient.Commands.CreateIngredient
 {
+
+    //<summary>
+    // Parameters to create a new order.
+    //</summary>
     public class CreateOrderCommand : IRequest
     {
+        [SwaggerParameter(
+            Description = "Dish id"
+            )]
+
+        //<example>
+        // {2,1}
+        //</example>
         public List<int> Dishes { get; set; }
+
+        [SwaggerParameter(
+            Description = "Order Sub Total"
+            )]
+
+        //<example>
+        // 6.00
+        //</example>
         public double SubTotal { get; set; }
+
+        [SwaggerParameter(
+            Description = "Table Id"
+            )]
+
+        //<example>
+        // 2
+        //</example>
         public int TableId { get; set; }
 
     }

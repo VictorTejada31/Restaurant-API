@@ -5,11 +5,22 @@ using Restaurant.Core.Application.Dtos.Table;
 using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Core.Application.Wrappers;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Restaurant.Core.Application.Features.Ingredient.Queries.GetIngredientById
 {
+    //<summary>
+    // Parameters to create a new ingredient.
+    //</summary>
     public class GetIngredientByIdQuery : IRequest<Response<IngredientResponse>>
     {
+        [SwaggerParameter(
+            Description = "Ingredient Id"
+            )]
+
+        //<example>
+        // 3
+        //</example>
         public int Id { get; set; }
     }
 

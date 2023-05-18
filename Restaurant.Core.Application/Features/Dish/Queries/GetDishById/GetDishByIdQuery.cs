@@ -4,12 +4,22 @@ using Restaurant.Core.Application.Dtos.Dish;
 using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Core.Application.Wrappers;
-
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Restaurant.Core.Application.Features.Ingredient.Queries.GetIngredientById
 {
+    //<summary>
+    // Parameters to get a dish by id.
+    //</summary>
     public class GetDishByIdQuery : IRequest<Response<DishResponse>>
     {
+        [SwaggerParameter(
+           Description = "Dish Id"
+           )]
+
+        //<example>
+        // 2
+        //</example>
         public int Id { get; set; }
     }
 

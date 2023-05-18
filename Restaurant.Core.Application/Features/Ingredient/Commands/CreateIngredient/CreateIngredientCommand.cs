@@ -2,11 +2,22 @@
 using MediatR;
 using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Core.Domain.Entities;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Restaurant.Core.Application.Features.Ingredient.Commands.CreateIngredient
 {
+    //<summary>
+    // Parameters to create a new ingredient.
+    //</summary>
     public class CreateIngredientCommand : IRequest
     {
+        [SwaggerParameter(
+            Description = "Ingredient Name"
+            )]
+
+        //<example>
+        // Salt
+        //</example>
         public string Name { get; set; }
     }
 

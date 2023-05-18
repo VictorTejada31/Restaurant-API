@@ -1,16 +1,55 @@
 ﻿using AutoMapper;
 using MediatR;
 using Restaurant.Core.Application.Interfaces.Repository;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Text;
 
 namespace Restaurant.Core.Application.Features.Ingredient.Commands.CreateIngredient
 {
+    //<summary>
+    // Parameters to create a new Dish.
+    //</summary>
     public class CreateDishCommand : IRequest
     {
+        [SwaggerParameter(
+            Description = "Dish Name"
+            )]
+
+        //<example>
+        // Pizza
+        //</example>
         public string Name { get; set; }
+
+        [SwaggerParameter(
+            Description = "Dish Price"
+            )]
+        //<example>
+        // 5
+        //</example>
         public double Price { get; set; }
+
+        [SwaggerParameter(
+            Description = "For how many people"
+            )]
+        //<example>
+        // 3.00
+        //</example>
         public int PeopleAmount { get; set; }
+
+        [SwaggerParameter(
+            Description = "Ingredients Ids"
+            )]
+        //<example>
+        // {1,2,5}
+        //</example>
         public List<int> Ingredients { get; set; }
+
+        [SwaggerParameter(
+            Description = "Dish Category Id"
+            )]
+        //<example>
+        // 2
+        //</example>
         public int DishCategoryId { get; set; }
 
     }

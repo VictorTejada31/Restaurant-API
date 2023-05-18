@@ -10,6 +10,7 @@ using Restaurant.Infrastructure.Persistence.Seeds;
 using Restaurant.WebApi.Extention;
 using Restaurant.Core.Application.Interfaces.Repository;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddApplicationLayer();
 builder.Services.AddIndentityInfras(builder.Configuration);
 builder.Services.AddPersistenceInfras(builder.Configuration);
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(new ProducesAttribute("application/json"));
+}).ConfigureApiBehaviorOptions(options =>
+{
+    options.SuppressInferBindingSourcesForParameters = true;
+    options.SuppressMapClientErrors = true;
+});
 builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGenExtention();
 builder.Services.AddApiVertioningExtention();

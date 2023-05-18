@@ -4,13 +4,37 @@ using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Core.Application.Wrappers;
 using Restaurant.Core.Domain.Entities;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Restaurant.Core.Application.Features.Table.Commands.UpdateTable
 {
+    //<summary>
+    // Parameters to uptate a specified table.
+    //</summary>
     public class UpdateTableCommand : IRequest<Response<UpdateTableResponse>>
     {
+        [SwaggerParameter(
+           Description = "Table Id"
+           )]
+        //<example>
+        // 4
+        //</example>
         public int Id { get; set; }
+
+        [SwaggerParameter(
+           Description = "Table Capacity"
+           )]
+        //<example>
+        // 2
+        //</example>
         public int Capacity { get; set; }
+
+        [SwaggerParameter(
+          Description = "Table Description"
+          )]
+        //<example>
+        // Table for 2 peoples.
+        //</example>
         public string Description { get; set; }
     }
 

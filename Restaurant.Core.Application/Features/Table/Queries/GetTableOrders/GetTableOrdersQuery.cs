@@ -4,11 +4,21 @@ using Restaurant.Core.Application.Dtos.Table;
 using Restaurant.Core.Application.Exceptions;
 using Restaurant.Core.Application.Interfaces.Repository;
 using Restaurant.Core.Application.Wrappers;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Restaurant.Core.Application.Features.Table.Queries.GetTableOrders
 {
+    //<summary>
+    // Parameters to get the orders from a specfied table.
+    //</summary>
     public class GetTableOrdersQuery : IRequest<Response<TableOrdersResponse>>
     {
+        [SwaggerParameter(
+           Description = "Table Id"
+           )]
+        //<example>
+        // 2
+        //</example>
         public int Id { get; set; }
     }
 
